@@ -88,8 +88,6 @@ const onPageChange = (page) => {
   currentPage.value = page;
 };
 
-
-
 </script>
 
 <template>
@@ -142,7 +140,7 @@ const onPageChange = (page) => {
     height: 40px;
    
     column-gap: 20px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .paginate-buttons {
