@@ -36,6 +36,7 @@ const toggleMenu = () => {
 
       <!-- Área da rádio -->
      <FavoritesView/>
+     
     </main>
   </div>
 </template>
