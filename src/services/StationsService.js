@@ -6,6 +6,9 @@ export default{
     },
     getStationsByCountry(nameCountry) {
         return api.get(`bycountry/${nameCountry}`);
+    },
+    getStationInput(query){
+        return api.get(`byname/${query}`)
     }
 
 }

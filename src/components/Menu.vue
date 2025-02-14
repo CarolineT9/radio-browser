@@ -16,6 +16,7 @@ const filteredStations = ref([]);
 const currentPage = ref(1);
 const itemsPerPage = 10;
 const loading = ref(false);
+const searchQuery = ref("");
 
 const countries = ref([
   { name: "Todos", code: "all" },
@@ -58,12 +59,23 @@ const filterByCountry = async () => {
   }
 };
 
-
+const filterInput = async () => {
+  if (searchQuery.value.length < 3) return;
+  loading.value = true;
+  try {
+    const { data } = await StationsService.getStationInput(searchQuery.value); // Aqui era searchQuery sem .value
+    filteredStations.value = data; // Atualiza filteredStations e não stations
+  } catch (error) {
+    console.error("Erro ao buscar rádios:", error);
+  } finally {
+    loading.value = false;
+  }
+};
 onMounted(fetchAllStations);
 
 
 watch(selectedCountry, filterByCountry);
-
+watch(searchQuery, filterInput)
 const paginatedStations = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
@@ -75,6 +87,9 @@ const totalPages = computed(() => Math.ceil(filteredStations.value.length / item
 const onPageChange = (page) => {
   currentPage.value = page;
 };
+
+
+
 </script>
 
 <template>
@@ -85,7 +100,7 @@ const onPageChange = (page) => {
     </button>
 
     <div class="w-full mt-10 flex justify-center">
-      <input placeholder="Busque estações..." type="text"
+      <input  v-model="searchQuery" @input="filterInput" placeholder="Busque estações..." type="text"
         class="w-full h-12 text-gray-700 px-2 font-medium rounded-lg text-2xl bg-gray-400 placeholder-gray-500" />
     </div>
 
