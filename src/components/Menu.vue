@@ -137,36 +137,31 @@ const onPageChange = (page) => {
 <style>
   .pagination-container {
     display: flex;
-
-    column-gap: 5px;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+   
+    column-gap: 20px;
+    margin-top: 40px;
   }
 
   .paginate-buttons {
-    height: 30px;
-
-    width: 30px;
-
-    border-radius: 20px;
-
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
     cursor: pointer;
-
-    background-color: rgb(77, 73, 73);
-
-    border: 1px solid rgb(217, 217, 217);
-
-    color: black;
+    background-color: #374151;
+    
+    color: white;
   }
 
   .paginate-buttons:hover {
-    background-color: #d8d8d8;
+    background-color: #111827;
   }
 
   .active-page {
-    background-color: #3498db;
-
-    border: 1px solid #3498db;
-
-    color: white;
+    background-color: #9ca3af;
+    color: #111827;
   }
 
   .active-page:hover {
