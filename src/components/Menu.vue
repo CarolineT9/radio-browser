@@ -1,7 +1,7 @@
 <script setup>
 import RadiosList from './RadiosList.vue';
-import { onMounted, ref, computed } from 'vue';
-import api from "../api/axios";
+import { onMounted, ref, computed, watch } from 'vue';
+import StationsService from '../services/StationsService';
 
 const props = defineProps({
   isMenuOpen: {
@@ -11,29 +11,66 @@ const props = defineProps({
 });
 const emit = defineEmits(['close-menu']);
 
-const stations = ref([]);
+const stations = ref([]); 
+const filteredStations = ref([]); 
 const currentPage = ref(1);
-const itemsPerPage = 10; 
+const itemsPerPage = 10;
+const loading = ref(false);
+
+const countries = ref([
+  { name: "Todos", code: "all" },
+  { name: "Brasil", code: "Brazil" },
+  { name: "Estados Unidos", code: "United States" },
+  { name: "França", code: "France" }
+]);
+
+const selectedCountry = ref("all"); 
 
 
-onMounted(async () => {
+const fetchAllStations = async () => {
+  loading.value = true;
   try {
-    const response = await api.get('search?limit=1000'); 
-    stations.value = response.data; 
+    const { data } = await StationsService.getStations();
+    stations.value = data;
+    filteredStations.value = data; 
   } catch (error) {
-    console.error("Erro ao buscar estações:", error);
+    console.error("Erro ao buscar rádios:", error);
+  } finally {
+    loading.value = false;
   }
-});
+};
 
+// Filtra rádios por país
+const filterByCountry = async () => {
+  if (selectedCountry.value === "all") {
+    filteredStations.value = stations.value;
+    return;
+  }
+
+  loading.value = true;
+  try {
+    const { data } = await StationsService.getStationsByCountry(selectedCountry.value);
+    filteredStations.value = data;
+  } catch (error) {
+    console.error("Erro ao buscar rádios por país:", error);
+  } finally {
+    loading.value = false;
+  }
+};
+
+
+onMounted(fetchAllStations);
+
+
+watch(selectedCountry, filterByCountry);
 
 const paginatedStations = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
-  return stations.value.slice(start, end);
+  return filteredStations.value.slice(start, end);
 });
 
-
-const totalPages = computed(() => Math.ceil(stations.value.length / itemsPerPage));
+const totalPages = computed(() => Math.ceil(filteredStations.value.length / itemsPerPage));
 
 const onPageChange = (page) => {
   currentPage.value = page;
@@ -52,18 +89,27 @@ const onPageChange = (page) => {
         class="w-full h-12 text-gray-700 px-2 font-medium rounded-lg text-2xl bg-gray-400 placeholder-gray-500" />
     </div>
 
+    <div class="w-full mt-10 flex justify-center">
+      <select v-model="selectedCountry"
+        class="w-full h-12 text-gray-700 px-2 font-medium rounded-lg bg-gray-400">
+        <option v-for="country in countries" :key="country.code" :value="country.code">
+          {{ country.name }}
+        </option>
+      </select>
+    </div>
+
     <h3 class="text-2xl mt-5 text-white font-semibold">Stations</h3>
 
-    <!-- Lista paginada de estações -->
-    <div class="w-full mt-3">
+    <div v-if="loading" class="text-white mt-3">Carregando estações...</div>
+
+    <div v-else class="w-full mt-3">
       <RadiosList v-for="station in paginatedStations" 
         :key="station.stationuuid" 
         :station="station"/>
     </div>
 
-    <!-- Paginação -->
     <VueAwesomePaginate
-      :total-items="stations.length"
+      :total-items="filteredStations.length"
       :items-per-page="itemsPerPage"
       :max-pages-shown="1"
       :show-breakpoint-buttons="false"
@@ -72,6 +118,7 @@ const onPageChange = (page) => {
     />
   </aside>
 </template>
+
 <style>
   .pagination-container {
     display: flex;
