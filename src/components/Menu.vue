@@ -16,16 +16,16 @@ const filteredStations = ref([]);
 const currentPage = ref(1);
 const itemsPerPage = 10;
 const loading = ref(false);
-const searchQuery = ref("");
+const searchQuery = ref("")
+const filterSelected =  ref("name")
 
-const countries = ref([
-  { name: "Todos", code: "all" },
-  { name: "Brasil", code: "Brazil" },
-  { name: "Estados Unidos", code: "United States" },
-  { name: "França", code: "France" }
+const filters = ref([
+  { name: "Nome", value: "name" },
+  { name: "País", value: "country" },
+  { name: "Idioma", value: "language" },
 ]);
 
-const selectedCountry = ref("all"); 
+
 
 
 const fetchAllStations = async () => {
@@ -41,40 +41,33 @@ const fetchAllStations = async () => {
   }
 };
 
-// Filtra rádios por país
-const filterByCountry = async () => {
-  if (selectedCountry.value === "all") {
-    filteredStations.value = stations.value;
-    return;
-  }
-
-  loading.value = true;
-  try {
-    const { data } = await StationsService.getStationsByCountry(selectedCountry.value);
-    filteredStations.value = data;
-  } catch (error) {
-    console.error("Erro ao buscar rádios por país:", error);
-  } finally {
-    loading.value = false;
-  }
-};
 
 const filterInput = async () => {
   if (searchQuery.value.length < 3) return;
   loading.value = true;
+
   try {
-    const { data } = await StationsService.getStationInput(searchQuery.value); // Aqui era searchQuery sem .value
-    filteredStations.value = data; // Atualiza filteredStations e não stations
+    let response;
+    if (filterSelected.value === "name") {
+      response = await StationsService.getStationByName(searchQuery.value);
+    } else if (filterSelected.value === "language") {
+      response = await StationsService.getStationByLang(searchQuery.value);
+    } else if (filterSelected.value === "country") {
+      response = await StationsService.getStationsByCountry(searchQuery.value);
+    }
+
+    if (response) {
+      filteredStations.value = response.data;
+    }
   } catch (error) {
     console.error("Erro ao buscar rádios:", error);
   } finally {
     loading.value = false;
   }
 };
+
 onMounted(fetchAllStations);
 
-
-watch(selectedCountry, filterByCountry);
 watch(searchQuery, filterInput)
 
 const paginatedStations = computed(() => {
@@ -82,7 +75,6 @@ const paginatedStations = computed(() => {
   const end = start + itemsPerPage;
   return filteredStations.value.slice(start, end);
 });
-
 
 
 const onPageChange = (page) => {
@@ -102,12 +94,12 @@ const onPageChange = (page) => {
       <input  v-model="searchQuery" @input="filterInput" placeholder="Busque estações..." type="text"
         class="w-full h-12 text-gray-700 px-2 font-medium rounded-lg text-2xl bg-gray-400 placeholder-gray-500" />
     </div>
-
+    {{ filterSelected }}
     <div class="w-full mt-10 flex justify-center">
-      <select v-model="selectedCountry"
+      <select v-model="filterSelected"
         class="w-full h-12 text-gray-700 px-2 font-medium rounded-lg bg-gray-400">
-        <option v-for="country in countries" :key="country.code" :value="country.code">
-          {{ country.name }}
+        <option v-for="filter in filters" :key="filter.value" :value="filter.value">
+          {{ filter.name }}
         </option>
       </select>
     </div>

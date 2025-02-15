@@ -2,13 +2,17 @@ import api from "../api/axios";
 
 export default{
     getStations(){
-        return api.get('search?limit=1000')
+        return api.get('/search?limit=1000')
     },
-    getStationsByCountry(nameCountry) {
-        return api.get(`bycountry/${nameCountry}`);
+    getStationsByCountry(country) {
+        return api.get(`bycountry/${country}`);
     },
-    getStationInput(query){
-        return api.get(`byname/${query}`)
+    getStationByName(name){
+         return api.get(`byname/${name}`)
+    },
+    getStationByLang(language){
+        return api.get(`bylanguage/${language}`)
     }
+    
 
 }
