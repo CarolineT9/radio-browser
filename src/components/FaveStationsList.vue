@@ -53,26 +53,26 @@ const saveEdit = (updatedStation) => {
 </script>
 
 <template>
-    <div class="bg-gray-700 rounded-lg h-full p-5 min-h-20 mt-4 flex justify-between">
+    <div class="bg-zinc-700 rounded-lg h-full p-5 min-h-20 mt-4 flex justify-between">
         <div class="flex h-full">
             <img class="w-16 h-12 mr-3 rounded-md" :src="props.faveStation.favicon" alt="Icon image">
 
             <div class="flex">
                 <div>
-                    <p class="font-semibold text-white">{{ props.faveStation.name }}</p>
-                    <p class="text-white text-sm -mt-px">Votes: {{ props.faveStation.votes }}</p>
+                    <p class="font-semibold text-zinc-100">{{ props.faveStation.name }}</p>
+                    <p class="text-zinc-100 text-sm -mt-px">Votes: {{ props.faveStation.votes }}</p>
                 </div>
                 <button class="ml-2 mr-2 flex" @click="openModal(props.faveStation)">
-                    <i class="mdi mdi-pencil text-gray-400"></i>
+                    <i class="mdi mdi-pencil text-zinc-100"></i>
                 </button>
                 <button class="flex" @click="deleteFavorite(props.faveStation.stationuuid)">
-                    <i class="mdi mdi-delete text-gray-400"></i>
+                    <i class="mdi mdi-delete text-zinc-100"></i>
                 </button>
             </div>
         </div>
         <div class="h-full p-2 flex align-middle">
             <button class="w-10 h-10 flex" @click="toggleRadio">
-                <i :class="`mdi ${isPlaying ? 'mdi-stop' : 'mdi-play'} text-3xl text-gray-400`"></i>
+                <i :class="`mdi ${isPlaying ? 'mdi-stop' : 'mdi-play'} text-3xl text-zinc-100`"></i>
             </button>
         </div>
     </div>
