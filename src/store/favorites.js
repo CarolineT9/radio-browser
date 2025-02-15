@@ -18,6 +18,12 @@ export const useFavoritesStore = defineStore('favorite',{
         deleteFavorite(stationId){
             const index = this.favoritesStations.findIndex(s => s.stationuuid === stationId)
             this.favoritesStations.splice(index,1)
+        },
+        editFavorite(stationId, newName) {
+            const stationIndex = this.favoritesStations.findIndex(s => s.stationuuid === stationId);
+            if (stationIndex !== -1) {
+                this.favoritesStations[stationIndex].name = newName;
+            }
         }
     }
 
