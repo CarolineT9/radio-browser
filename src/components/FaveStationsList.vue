@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-
+import { useFavoritesStore } from "../store/favorites";
 const props = defineProps({
     faveStation: {
         type: Object,
@@ -11,7 +11,7 @@ const props = defineProps({
 
 const isPlaying = ref(false);
 const audio = ref(null);
-
+const useFavorite = useFavoritesStore()
 
 const toggleRadio = () => {
     if (!audio.value) {
@@ -25,7 +25,13 @@ const toggleRadio = () => {
     }
 
     isPlaying.value = !isPlaying.value;
+    
 };
+
+function deleteFavorite(id){
+    useFavorite.deleteFavorite(id)
+}
+
 </script>
 
 <template>
@@ -41,7 +47,7 @@ const toggleRadio = () => {
                 <button class="ml-2 mr-2 flex">
                     <i class="mdi mdi-pencil text-gray-400"></i>
                 </button>
-                <button class="flex">
+                <button class="flex" @click="deleteFavorite(props.faveStation.stationuuid)">
                     <i class="mdi mdi-delete text-gray-400"></i>
                 </button>
             </div>
