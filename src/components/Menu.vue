@@ -76,13 +76,14 @@ onMounted(fetchAllStations);
 
 watch(selectedCountry, filterByCountry);
 watch(searchQuery, filterInput)
+
 const paginatedStations = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
   return filteredStations.value.slice(start, end);
 });
 
-const totalPages = computed(() => Math.ceil(filteredStations.value.length / itemsPerPage));
+
 
 const onPageChange = (page) => {
   currentPage.value = page;
@@ -124,7 +125,7 @@ const onPageChange = (page) => {
     <VueAwesomePaginate
       :total-items="filteredStations.length"
       :items-per-page="itemsPerPage"
-      :max-pages-shown="1"
+      :max-pages-shown="2"
       :show-breakpoint-buttons="false"
       v-model="currentPage"
       @update:modelValue="onPageChange"
