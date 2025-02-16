@@ -2,6 +2,8 @@
 import RadiosList from './RadiosList.vue';
 import { onMounted, ref, computed, watch } from 'vue';
 import StationsService from '../services/StationsService';
+import Spiner from './Spiner.vue'
+
 
 const props = defineProps({
   isMenuOpen: {
@@ -82,14 +84,14 @@ const onPageChange = (page) => {
 
 <template>
   <aside v-if="props.isMenuOpen"
-    class="bg-zinc-800 sm:w-1/4 w-full sm:relative fixed h-full p-6 left-0 top-0 transition-all">
+    class="bg-zinc-800 md:w-1/2 lg:w-1/4 w-full sm:relative fixed h-full p-6 left-0 top-0 transition-all overflow-y-auto">
     <button class="absolute top-4 right-5" @click="emit('close-menu')">
       <i class="mdi mdi-close text-2xl text-gray-400"></i>
     </button>
 
     <div class="w-full mt-10 flex justify-center">
       <input v-model="searchQuery" @input="filterInput" placeholder="Busque estações..." type="text"
-        class="w-full h-10 text-zinc-700 px-2 font-medium rounded-lg  bg-zinc-700 placeholder-zinc-100" />
+        class="w-full h-10 text-zinc-100 px-2 font-medium rounded-lg  bg-zinc-700 placeholder-zinc-100" />
     </div>
 
     <div class="w-full mt-5 flex justify-center">
@@ -101,8 +103,10 @@ const onPageChange = (page) => {
     </div>
 
     <h3 class="text-2xl mt-5 text-green-500 font-semibold">Rádios ao vivo</h3>
-
-    <div v-if="loading" class="text-white mt-3">Carregando estações...</div>
+    <div v-if="loading" class="w-full spiner">
+      <Spiner />
+    </div>
+    
 
     <div v-else class="w-full mt-3">
       <RadiosList v-for="station in paginatedStations" :key="station.stationuuid" :station="station" />
@@ -146,4 +150,11 @@ const onPageChange = (page) => {
   background-color: #22C55E;
   color: #09090B;
 }
+.spiner{
+  display: flex;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
 </style>
