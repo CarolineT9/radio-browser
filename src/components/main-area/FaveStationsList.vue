@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { useFavoritesStore } from "../store/favorites";
+import { useFavoritesStore } from "../../store/favorites";
 import EditModal from "./EditModal.vue";
 
 const props = defineProps({
@@ -54,7 +54,7 @@ const saveEdit = (updatedStation) => {
 
 <template>
     <div class="bg-zinc-700 rounded-lg h-full p-5 mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <!-- Imagem + Título + Ícones -->
+       
         <div class="flex items-center">
             <img class="w-12 h-10 sm:w-16 sm:h-12 rounded-md mr-2" :src="props.faveStation.favicon" alt="Icon image">
             <p class="font-semibold text-zinc-100 text-sm sm:text-base">{{ props.faveStation.name }}</p>
@@ -68,7 +68,7 @@ const saveEdit = (updatedStation) => {
             </div>
         </div>
 
-        <!-- Botão de Play -->
+     
         <div class="flex justify-center sm:justify-start mt-2 sm:mt-0">
             <button class="w-14 h-14 sm:w-10 sm:h-10 flex justify-center items-center" @click="toggleRadio">
                 <i :class="`mdi ${isPlaying ? 'mdi-stop' : 'mdi-play'} text-4xl sm:text-3xl text-zinc-100`"></i>

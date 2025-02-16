@@ -1,6 +1,6 @@
 <script setup>
-import { ref, watch } from 'vue';
-import { useFavoritesStore } from '../store/favorites';
+import { ref } from 'vue';
+import { useFavoritesStore } from '../../store/favorites';
 
 const props = defineProps({
   station: {

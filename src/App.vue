@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-import Menu from './components/Menu.vue';
-import FavoritesView from './components/FavoritesView.vue';
+import Menu from './components/menu/Menu.vue';
+import FavoritesView from './components/main-area/FavoritesView.vue';
 
 const isMenuOpen = ref(false);
 

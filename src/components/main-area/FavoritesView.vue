@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { useFavoritesStore } from '../store/favorites';
+import { useFavoritesStore } from '../../store/favorites';
 import FaveStationsList from './FaveStationsList.vue';
 
 const faveStore = useFavoritesStore()

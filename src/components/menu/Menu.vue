@@ -1,8 +1,8 @@
 <script setup>
 import RadiosList from './RadiosList.vue';
 import { onMounted, ref, computed, watch } from 'vue';
-import StationsService from '../services/StationsService';
-import Spiner from './Spiner.vue'
+import StationsService from '../../services/StationsService';
+import Spiner from '../ui/Spiner.vue'
 
 
 const props = defineProps({
@@ -112,7 +112,7 @@ const onPageChange = (page) => {
       <RadiosList v-for="station in paginatedStations" :key="station.stationuuid" :station="station" />
     </div>
 
-    <VueAwesomePaginate :total-items="filteredStations.length" :items-per-page="itemsPerPage" :max-pages-shown="2"
+    <VueAwesomePaginate  :total-items="filteredStations.length" :items-per-page="itemsPerPage" :max-pages-shown="2"
       :show-breakpoint-buttons="false" v-model="currentPage" @update:modelValue="onPageChange" />
   </aside>
 </template>
@@ -123,9 +123,8 @@ const onPageChange = (page) => {
   justify-content: center;
   align-items: center;
   height: 40px;
-
   column-gap: 20px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .paginate-buttons {
