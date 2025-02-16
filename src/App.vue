@@ -11,7 +11,7 @@ const toggleMenu = () => {
 </script>
 
 <template>
-  <div class="flex h-screen">
+  <div class="flex h-full">
     <Menu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" />
     <button v-if="!isMenuOpen" class="fixed top-4    left-5 sm:left-10 " @click="toggleMenu">
       <i class="mdi mdi-menu text-4xl text-zinc-100"></i>

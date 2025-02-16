@@ -2,36 +2,37 @@
 
 ## Introdução
 
-
-Este é um desafio para testar seus conhecimentos de Front-end;
+Esta é a solução de desafio de conhecimentos de Front-end promovido pela [Coodesh](https://coodesh.com);
 O objetivo é avaliar a sua forma de estruturação e autonomia em decisões para construir algo escalável utilizando o Framework sugerido na vaga aplicada.
-[SPOILER] As instruções de entrega e apresentação do challenge estão no final deste Readme (=
-
-### Antes de começar
- 
-- O projeto deve utilizar a Linguagem e Framework específica na avaliação. Por exempo: Next.js, React.js, Nuxt.js, Vue.js, Angular e entre outras;
-- Considere como deadline da avaliação a partir do início do teste. Caso tenha sido convidado a realizar o teste e não seja possível concluir dentro deste período, avise a pessoa que o convidou para receber instruções sobre o que fazer.
-- Documentar todo o processo de investigação para o desenvolvimento da atividade (README.md no seu repositório); os resultados destas tarefas são tão importantes do que o seu processo de pensamento e decisões à medida que as completa, por isso tente documentar e apresentar os seus hipóteses e decisões na medida do possível.
 
 ## Case
 As pessoas estão com saudades de voltar nos tempos antigos e uma das melhores maneiras de solucionar esse problema é trazer a rádio de volta.
 Sua tarefa para esse case será desenvolver uma aplicação que consuma uma API de rádio para que os usuários possam desfrutar e relembrar desse tempo, seguindo os requisitos propostos neste desafio.
 
 ## Recursos
-1. Estudar a documentação da REST API: https://de1.api.radio-browser.info/json/stations/search?limit=10
-2. Utilizar Frameworks CSS, recomendamos alguns como:
-    - Tailwind CSS: https://tailwindcss.com/
-    - Material UI: https://material-ui.com/
-    - Angular Material: https://material.angular.io/
-    - Bootstrap: https://getbootstrap.com/
-    - Bulma: https://bulma.io/
-    - Outro de sua preferência
+1.  - [Radio Browser - REST API](https://de1.api.radio-browser.info/json/stations/search?limit=10)
+2.  - [Vue.js](https://vuejs.org) 
+3.  - [Pinia](https://pinia.vuejs.org)
+4.  - [Tailwind CSS](https://tailwindcss.com/)
+5.  - [Material Design Icons](https://pictogrammers.com/library/mdi/)
+6.  - [Vue Awsome Pagination](https://github.com/peshanghiwa/vue-awesome-paginate#readme)
+7   - [Axios](https://axios-http.com/ptbr/docs/intro)
+    
 
-## Tela para Desktop
-![Desktop](assets/desktop.png)
+## Telas para Desktop
+![Desktop](./public/screeshots/desktop-fullscreen.png)
+![Desktop](./public/screeshots/Desktop-playlist.png)
+![Desktop - Edit](./public/screeshots/edit-fullscreen.png)
+## Telas para Tablet
+![Tablet](./public/screeshots/tablet-playlist-fullscreen.png)
+![Tablet](./public/screeshots/tablet-playlist-fullscreen.png)
+![Tablet](./public/screeshots/Tablet-edit.png)
 
 ## Tela para Mobile
-![Mobile](assets/mobile.png)
+![Mobile](./public/screeshots/mobile-playlist.png)
+![Mobile](./public/screeshots/mobile-menu.png)
+![Mobile](./public/screeshots/mobile-edit.png)
+
 
 ## API
 Para obter os dados, utilizaremos a API do Radio Browser:

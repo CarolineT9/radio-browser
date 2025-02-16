@@ -4,7 +4,6 @@ import { onMounted, ref, computed, watch } from 'vue';
 import StationsService from '../../services/StationsService';
 import Spiner from '../ui/Spiner.vue'
 
-
 const props = defineProps({
   isMenuOpen: {
     type: Boolean,

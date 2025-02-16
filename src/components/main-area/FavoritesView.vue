@@ -21,7 +21,7 @@ const onPageChange = (page) => {
 </script>
 <template>
   <div>
-    <h2 class="text-2xl  font-semibold text-white">Rádios Favoritas</h2>
+    <h2 class="text-2xl  font-semibold text-zinc-100">Rádios Favoritas</h2>
     <div class="mt-5">
       <FaveStationsList v-for="faveStation in paginatedStations" :key="stationuuid" :fave-station="faveStation" />
     </div>
