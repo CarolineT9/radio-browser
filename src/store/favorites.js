@@ -2,32 +2,29 @@ import { defineStore } from "pinia";
 
 export const useFavoritesStore = defineStore("favorite", {
   state: () => ({
-    favoritesStations: ("station", []),
+    favoritesStations: JSON.parse(localStorage.getItem("favoritesStations")) || [],
   }),
   actions: {
+    saveToLocalStorage() {
+      localStorage.setItem("favoritesStations", JSON.stringify(this.favoritesStations));
+    },
     addFavorite(station) {
-      const stationFound = this.favoritesStations.find(
-        (s) => s.name === station.name
-      );
-      if (stationFound) {
-        return;
-      } else {
+      if (!this.favoritesStations.some((s) => s.stationuuid === station.stationuuid)) {
         this.favoritesStations.push(station);
+        this.saveToLocalStorage();
       }
     },
     deleteFavorite(stationId) {
-      const index = this.favoritesStations.findIndex(
-        (s) => s.stationuuid === stationId
-      );
-      this.favoritesStations.splice(index, 1);
+      this.favoritesStations = this.favoritesStations.filter((s) => s.stationuuid !== stationId);
+      this.saveToLocalStorage();
     },
     editFavorite(stationId, newName) {
-      const stationIndex = this.favoritesStations.findIndex(
-        (s) => s.stationuuid === stationId
-      );
-      if (stationIndex !== -1) {
-        this.favoritesStations[stationIndex].name = newName;
+      const station = this.favoritesStations.find((s) => s.stationuuid === stationId);
+      if (station) {
+        station.name = newName;
+        this.saveToLocalStorage();
       }
     },
   },
 });
+
