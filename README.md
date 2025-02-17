@@ -47,7 +47,7 @@ A aplicação permite que os usuários revivam a experiência do rádio, possibi
 ### Resquistos 
 
 Antes de começar, certifique-se de ter os seguintes requisitos instalados:
-[Node.js](https://nodejs.org/pt);
+[Node.js](https://nodejs.org/pt) (versão recomendada: 18 ou superior);
 [Git](https://git-scm.com/);
 
 ### Instalação
