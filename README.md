@@ -20,10 +20,13 @@ A aplicação permite que os usuários revivam a experiência do rádio, possibi
 ![Desktop](./public/screeshots/desktop-fullscreen.png)
 ![Desktop](./public/screeshots/Desktop-playlist.png)
 ![Desktop - Edit](./public/screeshots/edit-fullscreen.png)
+
+
 ## Telas para Tablet
 ![Tablet](./public/screeshots/tablet-playlist-fullscreen.png)
 ![Tablet](./public/screeshots/tablet-playlist-fullscreen.png)
 ![Tablet](./public/screeshots/Tablet-edit.png)
+
 
 ## Tela para Mobile
 ![Mobile](./public/screeshots/mobile-playlist.png)
@@ -39,7 +42,7 @@ A aplicação permite que os usuários revivam a experiência do rádio, possibi
 - Remover estações de rádio dos favoritos.
 - Buscar estações de rádio por nome, país e idioma.
 - Persistir os dados no localStorage para manter as preferências do usuário.
-- Interface responsiva, adaptável a diferentes dispositivos.
+- Visualizar interface responsiva, adaptável a diferentes dispositivos.
 
 
 ## Instruções de instalação: 
@@ -47,8 +50,8 @@ A aplicação permite que os usuários revivam a experiência do rádio, possibi
 ### Resquistos 
 
 Antes de começar, certifique-se de ter os seguintes requisitos instalados:
-[Node.js](https://nodejs.org/pt) (versão recomendada: 18 ou superior);
-[Git](https://git-scm.com/);
+- [Node.js](https://nodejs.org/pt) (versão recomendada: 18 ou superior);
+- [Git](https://git-scm.com/);
 
 ### Instalação
 
