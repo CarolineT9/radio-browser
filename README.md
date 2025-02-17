@@ -5,7 +5,8 @@
 Esta é a solução de desafio de conhecimentos de Front-end promovido pela [Coodesh](https://coodesh.com);
 A aplicação permite que os usuários revivam a experiência do rádio, possibilitando a busca de estações por nome, país de origem e idioma. Além disso, os usuários podem adicionar estações aos favoritos, bem como editá-las e removê-las conforme desejarem.
 
-
+## Link:
+[Vercel - Radio Browser](https://radio-browser-git-main-carolinet9s-projects.vercel.app)
 ## Tecnologias utilizadas: 
  - [Radio Browser - REST API](https://de1.api.radio-browser.info/json/stations/search?limit=10)
  - [Vue.js](https://vuejs.org) 
