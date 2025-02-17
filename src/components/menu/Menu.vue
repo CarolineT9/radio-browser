@@ -105,23 +105,23 @@ const onPageChange = (page) => {
     <div v-if="loading" class="w-full spiner">
       <Spiner />
     </div>
-    
 
     <div v-else class="w-full mt-3">
       <RadiosList v-for="station in paginatedStations" :key="station.stationuuid" :station="station" />
     </div>
 
-    <VueAwesomePaginate  :total-items="filteredStations.length" :items-per-page="itemsPerPage" :max-pages-shown="2"
+    <VueAwesomePaginate :total-items="filteredStations.length" :items-per-page="itemsPerPage" :max-pages-shown="2"
       :show-breakpoint-buttons="false" v-model="currentPage" @update:modelValue="onPageChange" />
   </aside>
 </template>
 
 <style>
+
 .pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
+  height: 50px;
   column-gap: 20px;
   margin-top: 30px;
 }
@@ -148,11 +148,11 @@ const onPageChange = (page) => {
   background-color: #22C55E;
   color: #09090B;
 }
-.spiner{
+
+.spiner {
   display: flex;
   height: 50%;
   align-items: center;
   justify-content: center;
 }
-
 </style>
