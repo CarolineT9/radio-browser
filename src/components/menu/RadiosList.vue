@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import { useFavoritesStore } from '../../store/favorites';
 
 const props = defineProps({
@@ -12,6 +12,12 @@ const props = defineProps({
 const faveStore = useFavoritesStore();
 const icon = ref(false);
 
+watchEffect(() => {
+
+  icon.value = faveStore.favoritesStations.some(
+    (s) => s.stationuuid === props.station.stationuuid
+  );
+});
 function toggleFavorite(data) {
   const stationFound = faveStore.favoritesStations.find(
     (s) => s.stationuuid === data.stationuuid
