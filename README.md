@@ -7,13 +7,13 @@ A aplicação permite que os usuários revivam a experiência do rádio, possibi
 
 
 ## Tecnologias utilizadas: 
-1.  - [Radio Browser - REST API](https://de1.api.radio-browser.info/json/stations/search?limit=10)
-2.  - [Vue.js](https://vuejs.org) 
-3.  - [Pinia](https://pinia.vuejs.org)
-4.  - [Tailwind CSS](https://tailwindcss.com/)
-5.  - [Material Design Icons](https://pictogrammers.com/library/mdi/)
-6.  - [Vue Awsome Pagination](https://github.com/peshanghiwa/vue-awesome-paginate#readme)
-7   - [Axios](https://axios-http.com/ptbr/docs/intro)
+ - [Radio Browser - REST API](https://de1.api.radio-browser.info/json/stations/search?limit=10)
+ - [Vue.js](https://vuejs.org) 
+ - [Pinia](https://pinia.vuejs.org)
+ - [Tailwind CSS](https://tailwindcss.com/)
+ - [Material Design Icons](https://pictogrammers.com/library/mdi/)
+ - [Vue Awsome Pagination](https://github.com/peshanghiwa/vue-awesome-paginate#readme)
+ - [Axios](https://axios-http.com/ptbr/docs/intro)
     
 
 ## Telas para Desktop
