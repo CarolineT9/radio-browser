@@ -1,0 +1,63 @@
+/* Using system font stack; no external font import needed */
+
+:root {
+  /* Colors */
+  --color-bg: #09090bbf;
+  --color-surface: #221f1f26; 
+  --color-primary: #ffffff80; 
+  --color-secondary: #FFFFFF; 
+
+  /* Spacing (16px multiples) */
+  --space-16: 1rem;   /* 16px */
+  --space-32: 2rem;   /* 32px */
+  --space-48: 3rem;   /* 48px */
+  --space-64: 4rem;   /* 64px */
+  --space-80: 5rem;   /* 80px */
+  --space-96: 6rem;   /* 96px */
+  --space-112: 7rem;  /* 112px */
+  --space-128: 8rem;  /* 128px */
+  --space-144: 9rem;  /* 144px */
+  --space-160: 10rem; /* 160px */
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0F0E0E;
+    --color-surface:#221f1f26; /* 85% transparency */
+    --color-text:  #FFFFFF;
+    --color-muted: #ffffff80;
+  }
+}
+
+/* Base application styles applying tokens */
+@layer base {
+  html, body, #app {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+  html {
+    font-family: var(--font-sans);
+    font-size: 18px;
+  }
+}
+
+/* Simple utilities to use tokens without inline styles */
+@layer utilities {
+  .text-primary { color: var(--color-primary); }
+  .text-secondary { color: var(--color-secondary); }
+  .bg-surface { background-color: var(--color-surface); }
+  .bg-primary { background-color: var(--color-primary); }
+  .border-muted { border-color: var(--color-muted); }
+  .p-token-4 { padding: var(--space-4); }
+  .m-token-4 { margin: var(--space-4); }
+}

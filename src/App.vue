@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import Menu from './components/menu/Menu.vue';
 import FavoritesView from './components/main-area/FavoritesView.vue';
-
+import Layout from './layout/Layout.vue';
 const isMenuOpen = ref(false);
 
 const toggleMenu = () => {
@@ -11,8 +11,10 @@ const toggleMenu = () => {
 </script>
 
 <template>
-  <div class="flex h-full">
-    <Menu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" />
+  <div class="flex min-h-screen items-center justify-center">
+    <Layout class="w-[1400px]"/>
+
+    <!-- <Menu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" />
     <button v-if="!isMenuOpen" class="fixed top-4    left-5 sm:left-10 " @click="toggleMenu">
       <i class="mdi mdi-menu text-4xl text-zinc-100"></i>
     </button>
@@ -21,6 +23,6 @@ const toggleMenu = () => {
         <h1 class="text-2xl text-green-500 font-bold -ml-8 mb-3 sm:text-4xl  sm:mb-5 ">Radio Browser</h1>
       </div>
       <FavoritesView />
-    </main>
+    </main> -->
   </div>
 </template>
