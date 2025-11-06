@@ -29,28 +29,68 @@
           'max-[800px]:left-0 max-[800px]:-translate-x-0 max-[800px]:w-[90vw]',
         ]"
       >
-        <ul class="flex text-secondary flex-col gap-2">
-          <template v-for="(item, i) in section.linksArr" :key="item.label">
-            <li>
-              <a
-                :href="item.href"
-                class="block px-3 py-2 rounded-md tracking-[3.8px] text-secondary font-thin hover:bg-white/10"
-                >{{ item.label }}</a
-              >
-            </li>
-            <hr
-              v-if="section.separators && i < section.linksArr.length - 1"
-              class="border-t border-zinc-600"
+        <!-- Slot dropdown se fornecido e quando deve ser aplicado à seção -->
+        <template v-if="slots && slots.dropdown && shouldUseDropdownSlot(section, idx)">
+          <slot
+            name="dropdown"
+            :section="section"
+            :index="idx"
+            :submit="onSubmit"
+            :modelValue="inputValues[idx]"
+            :setModelValue="(v) => (inputValues[idx] = v)"
+          />
+        </template>
+
+        <!-- Input-only dropdown -->
+        <template v-else-if="section.input">
+          <div class="flex flex-col gap-3">
+            <input
+              v-model="inputValues[idx]"
+              :placeholder="section.input.placeholder || 'Digite...'"
+              @keyup.enter="onSubmit(idx, section)"
+              class="w-full px-3 py-2 rounded-md bg-white/10 text-secondary placeholder:text-secondary/60 focus:outline-none focus:ring-2 focus:ring-primary"
+              type="text"
             />
-          </template>
-        </ul>
+            <button
+              v-if="section.input.buttonLabel !== undefined"
+              @click="onSubmit(idx, section)"
+              class="px-3 py-2 rounded-md bg-primary text-white hover:bg-primary/90 transition-colors"
+            >
+              {{ section.input.buttonLabel || 'Enviar' }}
+            </button>
+            <p v-if="section.input.helper" class="text-secondary/70 text-sm">
+              {{ section.input.helper }}
+            </p>
+          </div>
+        </template>
+
+        <!-- Links dropdown -->
+        <template v-else>
+          <ul class="flex text-secondary flex-col gap-4">
+            <template v-for="(item, i) in section.linksArr" :key="item.label">
+              <li>
+                <a
+                  :href="item.href"
+                  class="block px-3 py-2 rounded-md tracking-[3.8px] text-secondary font-thin hover:bg-white/10"
+                  >{{ item.label }}</a
+                >
+              </li>
+              <hr
+                v-if="section.separators && i < section.linksArr.length - 1"
+                class="border-t border-zinc-600"
+              />
+            </template>
+          </ul>
+        </template>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref, watch, useSlots } from "vue";
+
+const emit = defineEmits(["input-submit"]);
 
 const props = defineProps({
   sections: { 
@@ -60,6 +100,15 @@ const props = defineProps({
   separators: { 
     type: Boolean, 
     default: false },
+  // Controla onde o slot de dropdown será aplicado (flexível)
+  dropdownSlotSubtitle: {
+    type: String,
+    default: "",
+  },
+  dropdownSlotIndices: {
+    type: Array,
+    default: () => [],
+  },
 });
 
 const normalizeLinks = (links) => {
@@ -71,6 +120,7 @@ const sectionsNormalized = computed(() => {
   return (props.sections || []).map((item) => ({
     title: item.title || "",
     subtitle: item.subtitle || "",
+    input: item.input || null,
     linksArr: normalizeLinks(item.links),
     separators:
       item.separators !== undefined
@@ -80,6 +130,33 @@ const sectionsNormalized = computed(() => {
     dropdownWidthClass: item.dropdownWidthClass || "w-[220px]",
   }));
 });
+
+const inputValues = ref([]);
+watch(
+  sectionsNormalized,
+  (val) => {
+    inputValues.value = (val || []).map(() => "");
+  },
+  { immediate: true }
+);
+
+const onSubmit = (idx, section) => {
+  emit("input-submit", {
+    index: idx,
+    value: inputValues.value[idx] || "",
+    section,
+  });
+};
+
+const slots = useSlots();
+
+// Usa slot de dropdown apenas para seções específicas
+const shouldUseDropdownSlot = (section, idx) => {
+  if (!slots || !slots.dropdown) return false;
+  if (props.dropdownSlotSubtitle && section.subtitle === props.dropdownSlotSubtitle) return true;
+  if (Array.isArray(props.dropdownSlotIndices) && props.dropdownSlotIndices.includes(idx)) return true;
+  return false;
+};
 </script>
 
 <style scoped></style>
