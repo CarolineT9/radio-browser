@@ -6,10 +6,10 @@
         :key="section.title"
         class="border-b border-zinc-600 pb-4"
       >
-        <h3 class="text-primary tracking-widest text-lg font-semibold mb-3 ">{{ section.title }}</h3>
+        <h3 class="text-bg tracking-widest text-lg font-semibold mb-3 ">{{ section.title }}</h3>
         <ul :class="props.class" class="tracking-widest font-thin">
           <li v-for="(href, label) in section.links" :key="label">
-            <a :href="href" class="text-secondary hover:text-primary transition-colors">
+            <a :href="href" class="text-bg hover:text-secondary transition-colors">
               {{ label }}
             </a>
           </li>

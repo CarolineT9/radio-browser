@@ -9,7 +9,7 @@
       ]"
     >
       <span
-        class="text-[40px] text-primary tracking-widest origin-right -rotate-2 font-semibold transition-transform duration-300 ease-out group-hover:-translate-y-0.5 max-[1380px]:text-[32px] max-[1380px]:rotate-0 max-[1380px]:origin-center max-[1380px]:group-hover:translate-y-0"
+        class="text-[40px] text-surface tracking-widest origin-right -rotate-2 font-semibold transition-transform duration-300 ease-out group-hover:-translate-y-0.5 max-[1380px]:text-[32px] max-[1380px]:rotate-0 max-[1380px]:origin-center max-[1380px]:group-hover:translate-y-0"
       >
         {{ section.title }}
       </span>
@@ -41,37 +41,14 @@
           />
         </template>
 
-        <!-- Input-only dropdown -->
-        <template v-else-if="section.input">
-          <div class="flex flex-col gap-3">
-            <input
-              v-model="inputValues[idx]"
-              :placeholder="section.input.placeholder || 'Digite...'"
-              @keyup.enter="onSubmit(idx, section)"
-              class="w-full px-3 py-2 rounded-md bg-white/10 text-secondary placeholder:text-secondary/60 focus:outline-none focus:ring-2 focus:ring-primary"
-              type="text"
-            />
-            <button
-              v-if="section.input.buttonLabel !== undefined"
-              @click="onSubmit(idx, section)"
-              class="px-3 py-2 rounded-md bg-primary text-white hover:bg-primary/90 transition-colors"
-            >
-              {{ section.input.buttonLabel || 'Enviar' }}
-            </button>
-            <p v-if="section.input.helper" class="text-secondary/70 text-sm">
-              {{ section.input.helper }}
-            </p>
-          </div>
-        </template>
-
         <!-- Links dropdown -->
         <template v-else>
-          <ul class="flex text-secondary flex-col gap-4">
+          <ul class="flex text-bg flex-col gap-4">
             <template v-for="(item, i) in section.linksArr" :key="item.label">
               <li>
                 <a
                   :href="item.href"
-                  class="block px-3 py-2 rounded-md tracking-[3.8px] text-secondary font-thin hover:bg-white/10"
+                  class="block px-3 py-2 rounded-md tracking-[3.8px] text-bg font-thin hover:bg-white/10"
                   >{{ item.label }}</a
                 >
               </li>

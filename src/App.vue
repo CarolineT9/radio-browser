@@ -11,7 +11,7 @@ const toggleMenu = () => {
 </script>
 
 <template>
-  <div class="flex min-h-screen items-center justify-center">
+  <div class="flex min-h-screen items-center justify-center bg-bg">
     <Layout class="w-[1400px]"/>
 
     <!-- <Menu :isMenuOpen="isMenuOpen" @close-menu="toggleMenu" />

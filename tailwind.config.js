@@ -8,10 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#09090bbf',
-        surface: '#221f1f63',
-        primary: '#ffffff80',
-        secondary: '#FFFFFF',
+        bg: '#e6e6e6',
+        surface: '#424245',
+        primary: '#f5f5f5',
+        secondary: '#9e9e9e',
       },
       fontFamily: {
         sans: ['var(--font-sans)'],

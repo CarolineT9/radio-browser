@@ -1,11 +1,11 @@
 <template>
-  <div class="layout-bg flex flex-col w-full">
+  <div class="flex flex-col w-full">
     <!-- Mobile hamburger menu overlay -->
     <div v-if="isMobileMenuOpen" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm max-[855px]:block hidden"
       @click.self="toggleMobileMenu">
       <div class="absolute top-0 left-0 w-full bg-surface/90 backdrop-blur-md p-6" @click.stop>
         <div class="flex justify-between items-center mb-8">
-          <span class="text-primary text-2xl font-semibold tracking-widest">Menu</span>
+          <span class="text-bg text-2xl font-semibold tracking-widest">Menu</span>
           <button @click="toggleMobileMenu" class="text-secondary hover:text-primary transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -152,19 +152,5 @@ const onDesktopSubmit = (payload) => {
 };
 </script>
 <style scoped>
-.layout-bg {
-  background-image: radial-gradient(ellipse at center,
-      rgba(9, 9, 11, 0) 40%,
-      rgba(9, 9, 11, 0.75) 100%),
-    url("/bg_1920 1.png");
-  background-color: var(--color-bg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100px;
-}
+
 </style>
