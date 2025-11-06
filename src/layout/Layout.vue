@@ -53,126 +53,10 @@
 
       <!-- Desktop menu - hidden on mobile -->
       <div class="max-[820px]:hidden w-full flex items-center justify-between gap-8">
-      <div
-        class="group relative flex flex-col mt-[50px] ml-[30px] leading-[1] cursor-pointer select-none max-[1380px]:mt-[30px] max-[800px]:ml-0"
-      >
-        <span
-          class="text-[40px] text-primary origin-right -rotate-2 font-semibold transition-transform duration-300 ease-out group-hover:-translate-y-0.5 max-[1380px]:text-[32px] max-[1380px]:rotate-0 max-[1380px]:origin-center max-[1380px]:group-hover:translate-y-0"
-          >S t a t i o n s
-        </span>
-        <span
-          class="text-[32px] text-secondary font-thin origin-right -rotate-1 -translate-y-0.5 transition-transform duration-300 ease-out group-hover:-rotate-3 group-hover:-translate-y-1 max-[1380px]:text-[24px] max-[1380px]:rotate-0 max-[1380px]:translate-y-0 max-[1380px]:group-hover:rotate-0 max-[1380px]:group-hover:translate-y-0"
-          >b y c o u n t r y</span
-        >
-        <div
-          class="absolute left-1/2 top-[100%] -translate-x-1/2 mt-3 w-[220px] bg-surface/70 rounded-[24px] p-4 shadow-lg backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 translate-y-1 max-[1380px]:w-[200px] max-[800px]:left-0 max-[800px]:-translate-x-0 max-[800px]:w-[90vw] max-[800px]:p-3"
-        >
-          <ul class="flex flex-col gap-2">
-            <li>
-              <a
-                href="#"
-                class="block px-3 py-2 rounded-md text-secondary hover:bg-white/10"
-                >Ver todos</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block px-3 py-2 rounded-md text-secondary hover:bg-white/10"
-                >Top 10</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block px-3 py-2 rounded-md text-secondary hover:bg-white/10"
-                >Explorar</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div
-        class="group relative flex flex-col mt-[50px] mr-[30px] leading-[1] cursor-pointer select-none max-[1380px]:mt-[30px] max-[800px]:mr-0"
-      >
-        <span
-          class="text-[40px] text-primary origin-right -rotate-2 font-semibold transition-transform duration-300 ease-out group-hover:-translate-y-0.5 max-[1380px]:text-[32px] max-[1380px]:rotate-0 max-[1380px]:origin-center max-[1380px]:group-hover:translate-y-0"
-          >S t a t i o n s
-        </span>
-        <span
-          class="text-[32px] text-secondary font-thin origin-right -rotate-1 -translate-y-0.5 transition-transform duration-300 ease-out group-hover:-rotate-3 group-hover:-translate-y-1 max-[1380px]:text-[24px] max-[1380px]:rotate-0 max-[1380px]:translate-y-0 max-[1380px]:group-hover:rotate-0 max-[1380px]:group-hover:translate-y-0"
-          >b y n a m e</span
-        >
-        <div
-          class="absolute left-1/2 top-[100%] -translate-x-1/2 mt-3 w-[280px] bg-surface/70 rounded-[24px] p-4 shadow-lg backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 translate-y-1 max-[1380px]:w-[220px] max-[800px]:left-0 max-[800px]:-translate-x-0 max-[800px]:w-[90vw] max-[800px]:p-3"
-        >
-          <ul class="flex text-secondary flex-col gap-2">
-            <li>
-              <a
-                href="#"
-                class="block px-3 py-2 rounded-md tracking-[3.8px] text-secondary font-thin hover:bg-white/10"
-                >Ver todos</a
-              >
-            </li>
-            <hr class=" border-t border-zinc-600"/>
-            <li>
-              <a
-                href="#"
-                class="block px-3 py-2 rounded-md tracking-[3.8px] text-secondary font-thin hover:bg-white/10"
-                >Top 10</a
-              >
-            </li>
-            <hr class=" border-t border-zinc-600"/>
-            <li>
-              <a
-                href="#"
-                class="block px-3 py-2 rounded-md font-thin tracking-[3.8px] text-secondary hover:bg-white/10"
-                >Explorar</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div
-        class="group relative flex flex-col mt-[50px] mr-[30px] leading-[1] cursor-pointer select-none max-[1380px]:mt-[30px] max-[800px]:mr-0"
-      >
-        <span
-          class="text-[40px] text-primary origin-right -rotate-2 font-semibold transition-transform duration-300 ease-out group-hover:-translate-y-0.5 max-[1380px]:text-[32px] max-[1380px]:rotate-0 max-[1380px]:origin-center max-[1380px]:group-hover:translate-y-0"
-          >S t a t i o n s
-        </span>
-        <span
-          class="text-[32px] text-secondary font-thin origin-right -rotate-2 -translate-y-0.5 transition-transform duration-300 ease-out group-hover:-rotate-3 group-hover:-translate-y-1 max-[1380px]:text-[24px] max-[1380px]:rotate-0 max-[1380px]:translate-y-0 max-[1380px]:group-hover:rotate-0 max-[1380px]:group-hover:translate-y-0"
-          >b y l a n g u a g e</span
-        >
-        <div
-          class="absolute left-1/2 top-[100%] -translate-x-1/2 mt-3 w-[220px] bg-surface/70 rounded-[24px] p-4 shadow-lg backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 translate-y-1 max-[1380px]:w-[200px] max-[800px]:left-0 max-[800px]:-translate-x-0 max-[800px]:w-[90vw] max-[800px]:p-3"
-        >
-          <ul class="flex flex-col gap-2">
-            <li>
-              <a
-                href="#"
-                class="block px-3 py-2 rounded-md text-secondary hover:bg-white/10"
-                >Ver todos</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block px-3 py-2 rounded-md text-secondary hover:bg-white/10"
-                >Top 10</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block px-3 py-2 rounded-md text-secondary hover:bg-white/10"
-                >Explorar</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
+        <DesktopNavGroup 
+          :sections="desktopNav"
+          :separators="true" 
+        />
       </div>
     </div>
     <div class="flex-1 w-full flex items-center justify-center">
@@ -194,6 +78,7 @@
 import { ref } from 'vue'
 import NavLink from '../components/ui/NavLink.vue'
 import Input from '../components/ui/Input.vue'
+import DesktopNavGroup from '../components/ui/DesktopNavGroup.vue'
 // Config único para gerar todas as seções/links do menu mobile
 const mobileNav = [
   {
@@ -211,6 +96,43 @@ const mobileNav = [
       'Top 10': '#',
       'Explorar': '#',
     },
+  },
+]
+
+// Config para menu desktop usando title/subtitle
+const desktopNav = [
+  {
+    title: 'Stations',
+    subtitle: 'by Country',
+    links: {
+      'Ver todos': '#',
+      'Top 10': '#',
+      'Explorar': '#',
+    },
+    separators: true,
+    dropdownWidthClass: 'w-[280px]'
+  },
+  {
+    title: 'Stations',
+    subtitle: 'by Name',
+    links: {
+      'Ver todos': '#',
+      'Top 10': '#',
+      'Explorar': '#',
+    },
+    separators: true,
+    dropdownWidthClass: 'w-[280px]'
+  },
+  {
+    title: 'Stations',
+    subtitle: 'by Language',
+    links: {
+      'Ver todos': '#',
+      'Top 10': '#',
+      'Explorar': '#',
+    },
+    separators: true,
+    dropdownWidthClass: 'w-[280px]'
   },
 ]
 
