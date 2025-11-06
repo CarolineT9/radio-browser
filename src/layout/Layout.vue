@@ -2,16 +2,16 @@
   <div class="layout-bg flex flex-col w-full">
     <!-- Mobile hamburger menu overlay -->
     <div 
-      v-if="isMobileMenuOpen" 
+      v-if="isMobileMenuOpen"
       class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm max-[855px]:block hidden"
-      @click="toggleMobileMenu"
+      @click.self="toggleMobileMenu"
     >
       <div 
         class="absolute top-0 left-0 w-full bg-surface/90 backdrop-blur-md p-6"
         @click.stop
       >
         <div class="flex justify-between items-center mb-8">
-          <span class="text-primary text-2xl font-semibold">Menu</span>
+          <span class="text-primary text-2xl font-semibold tracking-widest">Menu</span>
           <button 
             @click="toggleMobileMenu"
             class="text-secondary hover:text-primary transition-colors"
@@ -22,30 +22,18 @@
           </button>
         </div>
         <nav class="space-y-6">
-          <div class="border-b border-zinc-600 pb-4">
-            <h3 class="text-primary text-lg font-semibold mb-3">Stations by Country</h3>
-            <ul class="space-y-2 ml-4">
-              <li><a href="#" class="text-secondary hover:text-primary transition-colors">Ver todos</a></li>
-              <li><a href="#" class="text-secondary hover:text-primary transition-colors">Top 10</a></li>
-              <li><a href="#" class="text-secondary hover:text-primary transition-colors">Explorar</a></li>
-            </ul>
-          </div>
-          <div class="border-b border-zinc-600 pb-4">
-            <h3 class="text-primary text-lg font-semibold mb-3">Stations by Name</h3>
-            <ul class="space-y-2 ml-4">
-              <li><a href="#" class="text-secondary hover:text-primary transition-colors">Ver todos</a></li>
-              <li><a href="#" class="text-secondary hover:text-primary transition-colors">Top 10</a></li>
-              <li><a href="#" class="text-secondary hover:text-primary transition-colors">Explorar</a></li>
-            </ul>
-          </div>
-          <div class="pb-4">
-            <h3 class="text-primary text-lg font-semibold mb-3">Stations by Language</h3>
-            <ul class="space-y-2 ml-4">
-              <li><a href="#" class="text-secondary hover:text-primary transition-colors">Ver todos</a></li>
-              <li><a href="#" class="text-secondary hover:text-primary transition-colors">Top 10</a></li>
-              <li><a href="#" class="text-secondary hover:text-primary transition-colors">Explorar</a></li>
-            </ul>
-          </div>
+          <NavLink 
+            :sections="mobileNav" 
+            :class="'space-y-2 ml-4'"
+          />
+          <NavLink>
+            <div class="border-b border-zinc-600 pb-4">
+              <h3 class="text-primary text-lg font-semibold mb-3">Stations by Name</h3>
+              <Input 
+              :placeholder="'Search'" 
+              :type="'text'" />
+            </div>
+          </NavLink>
         </nav>
       </div>
     </div>
@@ -204,6 +192,27 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import NavLink from '../components/ui/NavLink.vue'
+import Input from '../components/ui/Input.vue'
+// Config único para gerar todas as seções/links do menu mobile
+const mobileNav = [
+  {
+    title: 'Stations by Country',
+    links: {
+      'Ver todos': '#',
+      'Top 10': '#',
+      'Explorar': '#',
+    },
+  },
+  {
+    title: 'Stations by Language',
+    links: {
+      'Ver todos': '#',
+      'Top 10': '#',
+      'Explorar': '#',
+    },
+  },
+]
 
 const isMobileMenuOpen = ref(false)
 
