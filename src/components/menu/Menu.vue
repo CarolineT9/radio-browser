@@ -83,30 +83,30 @@ const onPageChange = (page) => {
 
 <template>
   <aside v-if="props.isMenuOpen"
-    class="bg-zinc-800 md:w-1/2 lg:w-1/4 w-full sm:relative fixed h-full p-6 left-0 top-0 transition-all overflow-y-auto">
-    <button class="absolute top-4 right-5" @click="emit('close-menu')">
-      <i class="mdi mdi-close text-2xl text-gray-400"></i>
+    class="bg-zinc-900 md:w-1/2 lg:w-1/4 w-full sm:relative fixed h-full p-6 left-0 top-0 transition-all overflow-y-auto border-r border-zinc-800 shadow-xl">
+    <button class="absolute top-4 right-5 w-10 h-10 flex items-center justify-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900" @click="emit('close-menu')" aria-label="Fechar menu">
+      <i class="mdi mdi-close text-2xl text-zinc-300"></i>
     </button>
 
-    <div class="w-full mt-10 flex justify-center">
+    <div class="w-full mt-12 flex justify-center">
       <input v-model="searchQuery" @input="filterInput" placeholder="Busque estações..." type="text"
-        class="w-full h-10 text-zinc-100 px-2 font-medium rounded-lg  bg-zinc-700 placeholder-zinc-100" />
+        class="w-full h-11 text-zinc-100 px-3 font-medium rounded-lg bg-zinc-800 placeholder-zinc-400 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" aria-label="Buscar estações" />
     </div>
 
     <div class="w-full mt-5 flex justify-center">
-      <select v-model="filterSelected" class="w-full h-10 text-zinc-100 px-2 font-medium rounded-lg bg-zinc-700">
+      <select v-model="filterSelected" class="w-full h-11 text-zinc-100 px-3 font-medium rounded-lg bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" aria-label="Filtro de busca">
         <option v-for="filter in filters" :key="filter.value" :value="filter.value">
           {{ filter.name }}
         </option>
       </select>
     </div>
 
-    <h3 class="text-2xl mt-5 text-green-500 font-semibold">Rádios ao vivo</h3>
+    <h3 class="text-2xl mt-6 text-emerald-400 font-semibold">Rádios ao vivo</h3>
     <div v-if="loading" class="w-full spiner">
       <Spiner />
     </div>
 
-    <div v-else class="w-full mt-3">
+    <div v-else class="w-full mt-4">
       <RadiosList v-for="station in paginatedStations" :key="station.stationuuid" :station="station" />
     </div>
 

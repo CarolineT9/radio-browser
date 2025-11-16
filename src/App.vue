@@ -19,7 +19,7 @@ const toggleMenu = () => {
     </button>
     <main class="flex flex-col min-h-screen p-5 sm:p-5 bg-zinc-950" :class="isMenuOpen ? 'md:w-1/2 lg:w-3/4' : 'w-full'">
       <div class="flex w-full justify-center">
-        <h1 class="text-2xl text-green-500 font-bold -ml-8 mb-3 sm:text-4xl  sm:mb-5 ">Radio Browser</h1>
+        <h1 class="text-2xl text-emerald-400 font-bold -ml-8 mb-3 sm:text-4xl sm:mb-5">Radio Browser</h1>
       </div>
       <FavoritesView />
     </main>
