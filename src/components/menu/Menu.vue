@@ -136,17 +136,17 @@ const onPageChange = (page) => {
 }
 
 .paginate-buttons:hover {
-  background-color: #09090B;
+  background-color: #18181b;
 }
 
 .active-page {
-  background-color: #A1A1AA;
-  color: #09090B;
+  background-color: #3f3f46;
+  color: #18181b;
 }
 
 .active-page:hover {
-  background-color: #22C55E;
-  color: #09090B;
+  background-color: #10b981;
+  color: #18181b;
 }
 
 .spiner {
