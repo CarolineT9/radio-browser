@@ -2,8 +2,9 @@
 import { ref } from 'vue';
 import Menu from './components/menu/Menu.vue';
 import FavoritesView from './components/main-area/FavoritesView.vue';
+import PlayerBar from './components/ui/PlayerBar.vue';
 
-const isMenuOpen = ref(false);
+const isMenuOpen = ref(true);
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -23,4 +24,5 @@ const toggleMenu = () => {
       <FavoritesView />
     </main>
   </div>
+  <PlayerBar />
 </template>

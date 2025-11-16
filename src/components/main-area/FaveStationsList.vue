@@ -1,6 +1,7 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useFavoritesStore } from "../../store/favorites";
+import { usePlayerStore } from "../../store/player";
 import EditModal from "./EditModal.vue";
 
 const props = defineProps({
@@ -10,24 +11,18 @@ const props = defineProps({
     }
 });
 
-const isPlaying = ref(false);
-const audio = ref(null);
+const player = usePlayerStore();
 const useFavorite = useFavoritesStore();
 const selectedStation = ref(null);
+const isCurrent = computed(() => player.currentStation && player.currentStation.stationuuid === props.faveStation.stationuuid);
+const isPlaying = computed(() => isCurrent.value && player.isPlaying);
 
 const toggleRadio = () => {
-    if (!audio.value) {
-        audio.value = new Audio(props.faveStation.url);
-    }
-
-    if (isPlaying.value) {
-        audio.value.pause();
+    if (!isCurrent.value || !player.isPlaying) {
+        player.play(props.faveStation);
     } else {
-        audio.value.play().catch(error => console.error("Erro ao reproduzir rádio:", error));
+        player.pause();
     }
-
-    isPlaying.value = !isPlaying.value;
-
 };
 
 const deleteFavorite = (id) => {
@@ -71,10 +66,12 @@ const saveEdit = (updatedStation) => {
 
         <div class="flex justify-center sm:justify-start mt-2 sm:mt-0">
             <button class="w-14 h-14 sm:w-10 sm:h-10 flex justify-center items-center" @click="toggleRadio">
-                <i :class="`mdi ${isPlaying ? 'mdi-stop' : 'mdi-play'} text-4xl sm:text-3xl text-zinc-100`"></i>
+                <i :class="`mdi ${isPlaying ? 'mdi-pause' : 'mdi-play'} text-4xl sm:text-3xl text-zinc-100`"></i>
             </button>
         </div>
     </div>
+
+    
 
     <EditModal :is-open="isOpen" :selected-station="selectedStation" @close-modal="closeModal" @save-edit="saveEdit" />
 </template>
