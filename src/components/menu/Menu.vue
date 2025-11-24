@@ -1,24 +1,24 @@
 <script setup>
-import RadiosList from './RadiosList.vue';
-import { onMounted, ref, computed, watch } from 'vue';
-import StationsService from '../../services/StationsService';
-import Spiner from '../ui/Spiner.vue'
+import RadiosList from "./RadiosList.vue";
+import { onMounted, ref, computed, watch } from "vue";
+import StationsService from "../../services/StationsService";
+import Spiner from "../ui/Spiner.vue";
 
 const props = defineProps({
   isMenuOpen: {
     type: Boolean,
-    required: true
-  }
+    required: true,
+  },
 });
-const emit = defineEmits(['close-menu']);
+const emit = defineEmits(["close-menu"]);
 
 const stations = ref([]);
 const filteredStations = ref([]);
 const currentPage = ref(1);
-const itemsPerPage = 10;
+const itemsPerPage = 7;
 const loading = ref(false);
-const searchQuery = ref("")
-const filterSelected = ref("name")
+const searchQuery = ref("");
+const filterSelected = ref("name");
 
 const filters = ref([
   { name: "Nome", value: "name" },
@@ -38,7 +38,6 @@ const fetchAllStations = async () => {
     loading.value = false;
   }
 };
-
 
 const filterInput = async () => {
   if (searchQuery.value.length < 3) return;
@@ -66,7 +65,7 @@ const filterInput = async () => {
 
 onMounted(fetchAllStations);
 
-watch(searchQuery, filterInput)
+watch(searchQuery, filterInput);
 
 const paginatedStations = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
@@ -74,28 +73,46 @@ const paginatedStations = computed(() => {
   return filteredStations.value.slice(start, end);
 });
 
-
 const onPageChange = (page) => {
   currentPage.value = page;
 };
-
 </script>
 
 <template>
-  <aside v-if="props.isMenuOpen"
-    class="bg-zinc-900 md:w-1/2 lg:w-1/4 w-full sm:relative fixed h-full p-6 left-0 top-0 transition-all overflow-y-auto border-r border-zinc-800 shadow-xl">
-    <button class="absolute top-4 right-5 w-10 h-10 flex items-center justify-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900" @click="emit('close-menu')" aria-label="Fechar menu">
+  <aside
+    v-if="props.isMenuOpen"
+    class="bg-zinc-900 md:w-1/2 lg:w-1/4 w-full sm:relative fixed h-full p-6 left-0 top-0 transition-all border-r border-zinc-800 shadow-xl"
+  >
+    <button
+      class="absolute top-4 right-5 w-10 h-10 flex items-center justify-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+      @click="emit('close-menu')"
+      aria-label="Fechar menu"
+    >
       <i class="mdi mdi-close text-2xl text-zinc-300"></i>
     </button>
 
     <div class="w-full mt-12 flex justify-center">
-      <input v-model="searchQuery" @input="filterInput" placeholder="Busque estações..." type="text"
-        class="w-full h-11 text-zinc-100 px-3 font-medium rounded-lg bg-zinc-800 placeholder-zinc-400 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" aria-label="Buscar estações" />
+      <input
+        v-model="searchQuery"
+        @input="filterInput"
+        placeholder="Busque estações..."
+        type="text"
+        class="w-full h-11 text-zinc-100 px-3 font-medium rounded-lg bg-zinc-800 placeholder-zinc-400 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+        aria-label="Buscar estações"
+      />
     </div>
 
     <div class="w-full mt-5 flex justify-center">
-      <select v-model="filterSelected" class="w-full h-11 text-zinc-100 px-3 font-medium rounded-lg bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" aria-label="Filtro de busca">
-        <option v-for="filter in filters" :key="filter.value" :value="filter.value">
+      <select
+        v-model="filterSelected"
+        class="w-full h-11 text-zinc-100 px-3 font-medium rounded-lg bg-zinc-800 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+        aria-label="Filtro de busca"
+      >
+        <option
+          v-for="filter in filters"
+          :key="filter.value"
+          :value="filter.value"
+        >
           {{ filter.name }}
         </option>
       </select>
@@ -107,16 +124,25 @@ const onPageChange = (page) => {
     </div>
 
     <div v-else class="w-full mt-4">
-      <RadiosList v-for="station in paginatedStations" :key="station.stationuuid" :station="station" />
+      <RadiosList
+        v-for="station in paginatedStations"
+        :key="station.stationuuid"
+        :station="station"
+      />
     </div>
 
-    <VueAwesomePaginate :total-items="filteredStations.length" :items-per-page="itemsPerPage" :max-pages-shown="2"
-      :show-breakpoint-buttons="false" v-model="currentPage" @update:modelValue="onPageChange" />
+    <VueAwesomePaginate
+      :total-items="filteredStations.length"
+      :items-per-page="itemsPerPage"
+      :max-pages-shown="2"
+      :show-breakpoint-buttons="false"
+      v-model="currentPage"
+      @update:modelValue="onPageChange"
+    />
   </aside>
 </template>
 
 <style>
-
 .pagination-container {
   display: flex;
   justify-content: center;
@@ -131,7 +157,7 @@ const onPageChange = (page) => {
   width: 40px;
   border-radius: 10px;
   cursor: pointer;
-  background-color: #3F3F46;
+  background-color: #3f3f46;
   color: white;
 }
 
