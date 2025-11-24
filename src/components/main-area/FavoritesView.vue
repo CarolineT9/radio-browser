@@ -30,7 +30,7 @@ watch(favorites, (newFavorites) => {
 </script>
 
 <template>
-  <div>
+  <div class="xl:p-[80px]">
     <h2 class="text-2xl font-semibold text-zinc-100">Rádios Favoritas</h2>
     <div class="mt-5">
       <FaveStationsList v-for="faveStation in paginatedStations" :key="faveStation.stationuuid"

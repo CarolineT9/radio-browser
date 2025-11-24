@@ -15,7 +15,7 @@ const emit = defineEmits(["close-menu"]);
 const stations = ref([]);
 const filteredStations = ref([]);
 const currentPage = ref(1);
-const itemsPerPage = 7;
+const itemsPerPage = 10;
 const loading = ref(false);
 const searchQuery = ref("");
 const filterSelected = ref("name");
@@ -81,7 +81,7 @@ const onPageChange = (page) => {
 <template>
   <aside
     v-if="props.isMenuOpen"
-    class="bg-zinc-900 md:w-1/2 lg:w-1/4 w-full sm:relative fixed h-full p-6 left-0 top-0 transition-all border-r border-zinc-800 shadow-xl"
+    class="bg-zinc-900 md:w-1/2 lg:w-1/4 w-full sm:relative fixed h-[calc(100vh-6rem)] p-6 left-0 top-0 transition-all border-r border-zinc-800 shadow-xl overflow-y-auto"
   >
     <button
       class="absolute top-4 right-5 w-10 h-10 flex items-center justify-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"

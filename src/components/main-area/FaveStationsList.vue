@@ -48,7 +48,7 @@ const saveEdit = (updatedStation) => {
 </script>
 
 <template>
-    <div class="bg-zinc-800 rounded-xl h-full p-5 mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between border border-zinc-700 hover:bg-zinc-700/70 transition-colors">
+    <div class="bg-zinc-800 rounded-xl h-full p-5 mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between border border-zinc-700 hover:bg-zinc-700/70 transition-colors">
 
         <div class="flex items-center">
             <img class="w-12 h-10 sm:w-16 sm:h-12 rounded-md mr-2" :src="props.faveStation.favicon" alt="Icon image">

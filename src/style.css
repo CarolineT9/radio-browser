@@ -6,3 +6,23 @@ body{
     font-size: 18px;
     background-color: #09090b !important;
 }
+
+/* Scrollbar customizado para Webkit */
+::-webkit-scrollbar {
+  width: 22px;
+  background: #10b981;
+}
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 25px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+
+}
+
+/* Scrollbar customizado para Firefox */
+* {
+  scrollbar-width: medium;
+  scrollbar-color: #10b981 #18181b;
+}
