@@ -9,12 +9,12 @@ body{
 
 /* Scrollbar customizado para Webkit */
 ::-webkit-scrollbar {
-  width: 22px;
+  width: 8px;
   background: #10b981;
 }
 ::-webkit-scrollbar-thumb {
   background: #10b981;
-  border-radius: 25px;
+  border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #10b981;
